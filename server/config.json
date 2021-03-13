@@ -1,0 +1,9 @@
+{
+    "DB_NAME": "sequelize_example",
+    "DB_USER": "root",
+    "DB_PASS": "",
+    "DB_OPTIONS": {
+        "host": "localhost",
+        "dialect": "mysql"
+    }
+}
