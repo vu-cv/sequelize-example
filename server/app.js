@@ -44,7 +44,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-db.sequelize.sync({force: true})
+db.sequelize.sync({force: false})
 let port = 8000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
