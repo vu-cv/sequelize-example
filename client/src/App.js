@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { Home, UserAdd, UserEdit } from './pages'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        Sequelize Example
-        </p>
-        <a
-          className="App-link"
-          href="/admin"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Admin
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/users/create" component={UserAdd} />
+          <Route path="/users/:id/edit" component={UserEdit} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
