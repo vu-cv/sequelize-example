@@ -10,6 +10,7 @@ var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var rolesRouter = require('./routes/roles');
 
 var app = express();
 app.use(cors())
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/roles', rolesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -42,7 +44,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-db.sequelize.sync({force: false})
+db.sequelize.sync({force: true})
 let port = 8000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

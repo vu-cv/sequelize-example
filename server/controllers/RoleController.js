@@ -1,5 +1,5 @@
 const db = require("../models");
-const {User, Role} = db;
+const { Role, User } = db;
 const Op = db.Sequelize.Op;
 
 let UserController = {}
@@ -32,7 +32,8 @@ UserController.findById = async (req, res) => {
 
 UserController.find = async (req, res) => {
     let { q } = req.query
-    let search = {}
+    let search = {
+    }
     if (q) {
         search.where = {
             email: {
@@ -40,12 +41,11 @@ UserController.find = async (req, res) => {
             }
         }
     }
-    search.include = [{
-        model : Role,
-        as: 'role'
-     }]
     try {
-        let data = await User.findAll(search)
+        let data = await Role.findAll({include : [{
+            model : User,
+            as: 'users'
+         }]})
         res.json(data);
     } catch (error) {
         res.status(500).json(error.message);
